@@ -17,6 +17,7 @@
 #include "gen-cpp/HelloWorld.h"
 #include "../curl_fetch.h"
 #include "cache_FIFO.h"
+#include "cache_Random.h"
 
 using namespace std;
 using namespace apache::thrift;
@@ -28,6 +29,7 @@ using namespace hellons;
 
 
 cache_fifo cache;
+// cache_random cache;
 
 class HelloWorldHandler : public HelloWorldIf {
 public:

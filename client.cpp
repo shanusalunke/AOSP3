@@ -46,15 +46,6 @@ statistics::statistics()
   miss_time=0;
 }
 
-void statistics::issue()
-{
-  gettimeofday(&tim, NULL);
-  time_int = tim.tv_sec+(tim.tv_usec/1000000.0);
-}
-
-
-
-
 int main()
 {
   boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
