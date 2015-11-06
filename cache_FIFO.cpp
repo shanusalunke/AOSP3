@@ -1,5 +1,5 @@
 #include <iostream>
-#include "fifo_cache.h"
+#include "cache_FIFO.h"
 
 cache_fifo::cache_fifo()
 {
@@ -49,7 +49,7 @@ int cache_fifo::cache_insert(string url, string value)
 		return 0;
 	while(cache_isFull(data_size))
 	{
-		cache_remove(cache_replace());
+		cache_remove(cache_decideReplace());
 	}
 
 	cache[url] = value;

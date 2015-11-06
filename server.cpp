@@ -16,6 +16,7 @@
 
 #include "gen-cpp/HelloWorld.h"
 #include "../curl_fetch.h"
+#include "cache_FIFO.h"
 
 using namespace std;
 using namespace apache::thrift;
@@ -25,8 +26,12 @@ using namespace apache::thrift::transport;
 using namespace apache::thrift::server;
 using namespace hellons;
 
+
+cache_fifo cache;
+
 class HelloWorldHandler : public HelloWorldIf {
 public:
+
   HelloWorldHandler()
   {
          std::cout<<"Server is up and running...\n";
@@ -37,9 +42,16 @@ void request(response& _return, const std::string& url)
        std::string cache_entry;
        std::cout<<"Requested URL: "<<url<<"\n";
 
-       fetch_url(url, cache_entry);
-       _return.document = cache_entry;
-       //cout << "the cache entry is" +  cache_entry << endl;
+       //Check if entry is in the cache
+       if (cache.cache_fetch(url, _return.document) == 1){
+         _return.isCacheHit = true;
+       }else{
+         fetch_url(url, cache_entry);
+         _return.document = cache_entry;
+         _return.isCacheHit = false;
+         std::cout<<"Insert into cache\n";
+         cache.cache_insert(url, cache_entry);
+       }
 }
 
 void shutdown()

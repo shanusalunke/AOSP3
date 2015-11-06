@@ -35,7 +35,7 @@ int main() {
           url = "google.com";
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
-          std::cout<<"DocSize: "<<doc_size<<"\n";
+          std::cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.isCacheHit <<"\n";
 
 }
   catch (TException& tx)
