@@ -69,7 +69,7 @@ int cache_fifo::cache_remove(string url)
 	return 1;
 }
 
-string cache_fifo::cache_replace()
+string cache_fifo::cache_decideReplace()
 {
 	return fifo_queue.front();
 }
