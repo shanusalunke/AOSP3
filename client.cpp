@@ -49,33 +49,9 @@ statistics::statistics()
 void statistics::issue()
 {
   gettimeofday(&tim, NULL);
-  time_int = tim.tv_sec+(tim.tv_usec/1000000.0); 
+  time_int = tim.tv_sec+(tim.tv_usec/1000000.0);
 }
-void statistics::receive(int response, long rcv_size){
-  gettimeofday(&tim, NULL);
-    time_int = (tim.tv_sec+(tim.tv_usec/1000000.0)) - time_int;
-    switch(response){
-      case 0 :
-          fail_count++;
-          fail_time += time_int;
-          break;
-      case 1 :
-          hit_count++;
-          hit_size += rcv_size;
-          hit_time += time_int;
-          break;
-      case 2 :
-          miss_count++;
-          miss_size += rcv_size;
-          miss_time += time_int;
-          break;
-      case 3 :
-          cap_exceed_count++;
-          cap_exceed_size += rcv_size;
-          exceed_time += time_int;
-          break;
-    }
-}
+
 
 
 
@@ -109,12 +85,14 @@ int main()
           url = url_list[index];
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
-          cout<<"DocSize: "<<doc_size<<"\n";
+            std::cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.isCacheHit <<"\n";
     }
       //    url = "google.com";
       //    client.request(serverResponse, url);
         //  doc_size = (long)serverResponse.document.length();
       //    std::cout<<"DocSize: "<<doc_size<<"\n";
+
+
 
 }
   catch (TException& tx)

@@ -3,6 +3,7 @@ namespace cpp hellons
 struct response
 {
 1:string document
+2:bool isCacheHit
 }
 
 service HelloWorld

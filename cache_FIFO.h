@@ -31,7 +31,8 @@ private:
   int cache_isFull(int data_size);
 	int cache_find(string url);
 	int cache_remove(string url);
-	string cache_replace();
+	string cache_decideReplace();
+  void cache_set_max(int max);
 };
 
 #endif
