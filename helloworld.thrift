@@ -1,5 +1,15 @@
 namespace cpp hellons
 
-service HelloWorld{
-  i32 sayHello()
+struct response
+{
+1:string document
+}
+
+service HelloWorld
+{
+
+response request(1:string url)
+
+/* Stop the server */
+oneway void shutdown()
 }

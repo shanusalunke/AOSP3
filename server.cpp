@@ -15,6 +15,7 @@
 #include <sstream>
 
 #include "gen-cpp/HelloWorld.h"
+#include "../curl_fetch.h"
 
 using namespace std;
 using namespace apache::thrift;
@@ -26,36 +27,28 @@ using namespace hellons;
 
 class HelloWorldHandler : public HelloWorldIf {
 public:
-  HelloWorldHandler() {}
-
-  void ping() { cout << "ping()" << endl; }
-
-  int32_t sayHello(){
-    return 3;
+  HelloWorldHandler()
+  {
+         std::cout<<"Server is up and running...\n";
   }
 
-  void zip() { cout << "zip()" << endl; }
-};
-
-class HelloWorldCloneFactory : virtual public HelloWorldIfFactory {
-public:
-  virtual ~HelloWorldCloneFactory() {}
-  virtual HelloWorldIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo)
+void request(response& _return, const std::string& url)
 {
-  boost::shared_ptr<TSocket> sock = boost::dynamic_pointer_cast<TSocket>(connInfo.transport);
-  cout << "Incoming connection\n";
-  cout << "\tSocketInfo: "  << sock->getSocketInfo() << "\n";
-  cout << "\tPeerHost: "    << sock->getPeerHost() << "\n";
-  cout << "\tPeerAddress: " << sock->getPeerAddress() << "\n";
-  cout << "\tPeerPort: "    << sock->getPeerPort() << "\n";
-  return new HelloWorldHandler;
+       std::string cache_entry;
+       std::cout<<"Requested URL: "<<url<<"\n";
+
+       fetch_url(url, cache_entry);
+       _return.document = cache_entry;
+       //cout << "the cache entry is" +  cache_entry << endl;
 }
 
-// virtual void releaseHandler( ::shared::SharedServiceIf* handler) {
-//   delete handler;
- //}
-
+void shutdown()
+{
+    printf("Shutting down...\n");
+    exit(0);
+  }
 };
+
 
 int main() {
   TThreadedServer server(
