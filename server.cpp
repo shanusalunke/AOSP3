@@ -17,6 +17,7 @@
 #include "gen-cpp/HelloWorld.h"
 #include "../curl_fetch.h"
 #include "cache_FIFO.h"
+#include "cache_LFU.h"
 
 using namespace std;
 using namespace apache::thrift;
@@ -27,7 +28,9 @@ using namespace apache::thrift::server;
 using namespace hellons;
 
 
-cache_fifo cache;
+//cache_fifo cache;
+
+cache_lfu cache;
 
 class HelloWorldHandler : public HelloWorldIf {
 public:
