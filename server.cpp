@@ -28,9 +28,14 @@ using namespace apache::thrift::transport;
 using namespace apache::thrift::server;
 using namespace hellons;
 
-// cache_fifo cache;
-// cache_random cache;
+/*FIFO CACHE*/
+//cache_fifo cache;
+
+/*LFU CACHE*/
 cache_lfu cache;
+
+/*RANDOM CACHE*/
+// cache_random cache;
 
 class HelloWorldHandler : public HelloWorldIf {
 public:
@@ -69,9 +74,17 @@ void shutdown()
 };
 
 
-int main() {
+int main(int argc, char **argv)
+{
+  int size;
+ if (argc == 2)
+ {
+   size = atoi(argv[1]);
+   cache.cache_set_max(size);
+   cout<<"Cache size set to: "<<size<<endl;
+ }
+
   TThreadedServer server(
-//  boost::make_shared<HelloWorldProcessorFactory>(boost::make_shared<HelloWorldCloneFactory>()),
   boost::make_shared<HelloWorldProcessor>(boost::make_shared<HelloWorldHandler>()),
   boost::make_shared<TServerSocket>(9091), //port
   boost::make_shared<TBufferedTransportFactory>(),

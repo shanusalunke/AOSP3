@@ -10,7 +10,7 @@ namespace cpp hellons
 struct response
 {
 1:string document
-2:int cache_hit_flag
+2:i32 cache_hit_flag
 }
 
 service HelloWorld
