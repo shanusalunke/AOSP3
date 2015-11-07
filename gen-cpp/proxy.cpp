@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "HelloWorld.h"
+#include "proxy.h"
 
-namespace hellons {
+namespace HTTPproxy {
 
 
-HelloWorld_request_args::~HelloWorld_request_args() throw() {
+proxy_request_args::~proxy_request_args() throw() {
 }
 
 
-uint32_t HelloWorld_request_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t proxy_request_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -54,10 +54,10 @@ uint32_t HelloWorld_request_args::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t HelloWorld_request_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t proxy_request_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("HelloWorld_request_args");
+  xfer += oprot->writeStructBegin("proxy_request_args");
 
   xfer += oprot->writeFieldBegin("url", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->url);
@@ -69,14 +69,14 @@ uint32_t HelloWorld_request_args::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-HelloWorld_request_pargs::~HelloWorld_request_pargs() throw() {
+proxy_request_pargs::~proxy_request_pargs() throw() {
 }
 
 
-uint32_t HelloWorld_request_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t proxy_request_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("HelloWorld_request_pargs");
+  xfer += oprot->writeStructBegin("proxy_request_pargs");
 
   xfer += oprot->writeFieldBegin("url", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString((*(this->url)));
@@ -88,11 +88,11 @@ uint32_t HelloWorld_request_pargs::write(::apache::thrift::protocol::TProtocol* 
 }
 
 
-HelloWorld_request_result::~HelloWorld_request_result() throw() {
+proxy_request_result::~proxy_request_result() throw() {
 }
 
 
-uint32_t HelloWorld_request_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t proxy_request_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -133,11 +133,11 @@ uint32_t HelloWorld_request_result::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t HelloWorld_request_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t proxy_request_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("HelloWorld_request_result");
+  xfer += oprot->writeStructBegin("proxy_request_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -150,11 +150,11 @@ uint32_t HelloWorld_request_result::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-HelloWorld_request_presult::~HelloWorld_request_presult() throw() {
+proxy_request_presult::~proxy_request_presult() throw() {
 }
 
 
-uint32_t HelloWorld_request_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t proxy_request_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -196,11 +196,11 @@ uint32_t HelloWorld_request_presult::read(::apache::thrift::protocol::TProtocol*
 }
 
 
-HelloWorld_shutdown_args::~HelloWorld_shutdown_args() throw() {
+proxy_shutdown_args::~proxy_shutdown_args() throw() {
 }
 
 
-uint32_t HelloWorld_shutdown_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t proxy_shutdown_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -228,10 +228,10 @@ uint32_t HelloWorld_shutdown_args::read(::apache::thrift::protocol::TProtocol* i
   return xfer;
 }
 
-uint32_t HelloWorld_shutdown_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t proxy_shutdown_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("HelloWorld_shutdown_args");
+  xfer += oprot->writeStructBegin("proxy_shutdown_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -239,32 +239,32 @@ uint32_t HelloWorld_shutdown_args::write(::apache::thrift::protocol::TProtocol* 
 }
 
 
-HelloWorld_shutdown_pargs::~HelloWorld_shutdown_pargs() throw() {
+proxy_shutdown_pargs::~proxy_shutdown_pargs() throw() {
 }
 
 
-uint32_t HelloWorld_shutdown_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t proxy_shutdown_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("HelloWorld_shutdown_pargs");
+  xfer += oprot->writeStructBegin("proxy_shutdown_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void HelloWorldClient::request(response& _return, const std::string& url)
+void proxyClient::request(response& _return, const std::string& url)
 {
   send_request(url);
   recv_request(_return);
 }
 
-void HelloWorldClient::send_request(const std::string& url)
+void proxyClient::send_request(const std::string& url)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("request", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  HelloWorld_request_pargs args;
+  proxy_request_pargs args;
   args.url = &url;
   args.write(oprot_);
 
@@ -273,7 +273,7 @@ void HelloWorldClient::send_request(const std::string& url)
   oprot_->getTransport()->flush();
 }
 
-void HelloWorldClient::recv_request(response& _return)
+void proxyClient::recv_request(response& _return)
 {
 
   int32_t rseqid = 0;
@@ -298,7 +298,7 @@ void HelloWorldClient::recv_request(response& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  HelloWorld_request_presult result;
+  proxy_request_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -311,17 +311,17 @@ void HelloWorldClient::recv_request(response& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "request failed: unknown result");
 }
 
-void HelloWorldClient::shutdown()
+void proxyClient::shutdown()
 {
   send_shutdown();
 }
 
-void HelloWorldClient::send_shutdown()
+void proxyClient::send_shutdown()
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_ONEWAY, cseqid);
 
-  HelloWorld_shutdown_pargs args;
+  proxy_shutdown_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -329,7 +329,7 @@ void HelloWorldClient::send_shutdown()
   oprot_->getTransport()->flush();
 }
 
-bool HelloWorldProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool proxyProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -348,34 +348,34 @@ bool HelloWorldProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* ip
   return true;
 }
 
-void HelloWorldProcessor::process_request(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void proxyProcessor::process_request(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("HelloWorld.request", callContext);
+    ctx = this->eventHandler_->getContext("proxy.request", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "HelloWorld.request");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "proxy.request");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "HelloWorld.request");
+    this->eventHandler_->preRead(ctx, "proxy.request");
   }
 
-  HelloWorld_request_args args;
+  proxy_request_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "HelloWorld.request", bytes);
+    this->eventHandler_->postRead(ctx, "proxy.request", bytes);
   }
 
-  HelloWorld_request_result result;
+  proxy_request_result result;
   try {
     iface_->request(result.success, args.url);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "HelloWorld.request");
+      this->eventHandler_->handlerError(ctx, "proxy.request");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -388,7 +388,7 @@ void HelloWorldProcessor::process_request(int32_t seqid, ::apache::thrift::proto
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "HelloWorld.request");
+    this->eventHandler_->preWrite(ctx, "proxy.request");
   }
 
   oprot->writeMessageBegin("request", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -398,67 +398,67 @@ void HelloWorldProcessor::process_request(int32_t seqid, ::apache::thrift::proto
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "HelloWorld.request", bytes);
+    this->eventHandler_->postWrite(ctx, "proxy.request", bytes);
   }
 }
 
-void HelloWorldProcessor::process_shutdown(int32_t, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol*, void* callContext)
+void proxyProcessor::process_shutdown(int32_t, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol*, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("HelloWorld.shutdown", callContext);
+    ctx = this->eventHandler_->getContext("proxy.shutdown", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "HelloWorld.shutdown");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "proxy.shutdown");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "HelloWorld.shutdown");
+    this->eventHandler_->preRead(ctx, "proxy.shutdown");
   }
 
-  HelloWorld_shutdown_args args;
+  proxy_shutdown_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "HelloWorld.shutdown", bytes);
+    this->eventHandler_->postRead(ctx, "proxy.shutdown", bytes);
   }
 
   try {
     iface_->shutdown();
   } catch (const std::exception&) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "HelloWorld.shutdown");
+      this->eventHandler_->handlerError(ctx, "proxy.shutdown");
     }
     return;
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->asyncComplete(ctx, "HelloWorld.shutdown");
+    this->eventHandler_->asyncComplete(ctx, "proxy.shutdown");
   }
 
   return;
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > HelloWorldProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< HelloWorldIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< HelloWorldIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new HelloWorldProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > proxyProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< proxyIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< proxyIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new proxyProcessor(handler));
   return processor;
 }
 
-void HelloWorldConcurrentClient::request(response& _return, const std::string& url)
+void proxyConcurrentClient::request(response& _return, const std::string& url)
 {
   int32_t seqid = send_request(url);
   recv_request(_return, seqid);
 }
 
-int32_t HelloWorldConcurrentClient::send_request(const std::string& url)
+int32_t proxyConcurrentClient::send_request(const std::string& url)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("request", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  HelloWorld_request_pargs args;
+  proxy_request_pargs args;
   args.url = &url;
   args.write(oprot_);
 
@@ -470,7 +470,7 @@ int32_t HelloWorldConcurrentClient::send_request(const std::string& url)
   return cseqid;
 }
 
-void HelloWorldConcurrentClient::recv_request(response& _return, const int32_t seqid)
+void proxyConcurrentClient::recv_request(response& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -508,7 +508,7 @@ void HelloWorldConcurrentClient::recv_request(response& _return, const int32_t s
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      HelloWorld_request_presult result;
+      proxy_request_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -530,18 +530,18 @@ void HelloWorldConcurrentClient::recv_request(response& _return, const int32_t s
   } // end while(true)
 }
 
-void HelloWorldConcurrentClient::shutdown()
+void proxyConcurrentClient::shutdown()
 {
   send_shutdown();
 }
 
-void HelloWorldConcurrentClient::send_shutdown()
+void proxyConcurrentClient::send_shutdown()
 {
   int32_t cseqid = 0;
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_ONEWAY, cseqid);
 
-  HelloWorld_shutdown_pargs args;
+  proxy_shutdown_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();

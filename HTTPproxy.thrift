@@ -1,4 +1,4 @@
-namespace cpp hellons
+namespace cpp HTTPproxy
 
 /*
 0 - cache hit
@@ -13,7 +13,7 @@ struct response
 2:i32 cache_hit_flag
 }
 
-service HelloWorld
+service proxy
 {
 
 response request(1:string url)

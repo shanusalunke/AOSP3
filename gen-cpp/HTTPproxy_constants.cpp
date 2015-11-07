@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "helloworld_constants.h"
+#include "HTTPproxy_constants.h"
 
-namespace hellons {
+namespace HTTPproxy {
 
-const helloworldConstants g_helloworld_constants;
+const HTTPproxyConstants g_HTTPproxy_constants;
 
-helloworldConstants::helloworldConstants() {
+HTTPproxyConstants::HTTPproxyConstants() {
 }
 
 } // namespace
