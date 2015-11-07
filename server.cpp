@@ -30,13 +30,20 @@ using namespace apache::thrift::server;
 using namespace HTTPproxy;
 
 /*FIFO CACHE*/
-//cache_fifo cache;
+#ifdef fifo_policy
+cache_fifo cache;
+#endif
 
 /*LFU CACHE*/
-// cache_lfu cache;
+#ifdef lfu_policy
+cache_lfu cache;
+#endif
 
 /*RANDOM CACHE*/
+#ifdef random_policy
 cache_random cache;
+#endif
+
 
 class proxyHandler : public proxyIf {
 public:
