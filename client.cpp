@@ -9,13 +9,13 @@
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TTransportUtils.h>
-#include "gen-cpp/HelloWorld.h"
+#include "gen-cpp/proxy.h"
 
 using namespace std;
 using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
-using namespace hellons;
+using namespace HTTPproxy;
 
 class statistics
 {
@@ -136,7 +136,7 @@ int main(int argc, char **argv)
   boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
   boost::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
   response serverResponse;
-  HelloWorldClient client(protocol);
+  proxyClient client(protocol);
 
   vector<string> url_list;
   int size = 0;

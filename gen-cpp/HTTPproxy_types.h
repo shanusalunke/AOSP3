@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef helloworld_TYPES_H
-#define helloworld_TYPES_H
+#ifndef HTTPproxy_TYPES_H
+#define HTTPproxy_TYPES_H
 
 #include <iosfwd>
 
@@ -17,7 +17,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-namespace hellons {
+namespace HTTPproxy {
 
 class response;
 

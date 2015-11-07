@@ -4,14 +4,14 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "helloworld_types.h"
+#include "HTTPproxy_types.h"
 
 #include <algorithm>
 #include <ostream>
 
 #include <thrift/TToString.h>
 
-namespace hellons {
+namespace HTTPproxy {
 
 
 response::~response() throw() {
