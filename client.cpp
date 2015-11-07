@@ -23,18 +23,20 @@ private:
   struct timeval tim;
   long hit_count;
   long miss_count;
-
+  long curl_fail_count;
+  long data_exceed_count;
   long hit_size;
   long miss_size;
-
+  long data_exceed_size;
   double hit_time;
   double miss_time;
-
+  double curl_fail_time;
+  double data_exceed_time;
    double time_int;
 public:
   statistics();
   void issue();
-  void receive(bool response, long rcv_size);
+  void receive(int response, long rcv_size);
   void tally();
 };
 
@@ -54,7 +56,7 @@ void statistics::issue()
   time_int = tim.tv_sec+(tim.tv_usec/1000000.0);
 }
 
-void statistics::receive(bool response, long rcv_size)
+void statistics::receive(int response, long rcv_size)
 {
     gettimeofday(&tim, NULL);
     time_int = (tim.tv_sec+(tim.tv_usec/1000000.0)) - time_int;
@@ -93,8 +95,15 @@ void statistics::receive(bool response, long rcv_size)
  }
 
 
-int main()
+int main(int argc, char **argv)
 {
+  int NUM_LOOPS = 100;
+  if (argc == 2)
+  {
+    NUM_LOOPS = atoi(argv[1]);
+  }
+  std::cout<<"Number of loops = "<<NUM_LOOPS<<"\n";
+
   statistics stats;
   boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
   boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
@@ -118,14 +127,14 @@ int main()
   try {
     transport->open();
     std::cout<<"Using access sequence : Random\n";
-    for(int i=0;i<100;i++)
+    for(int i=0;i<NUM_LOOPS;i++)
     {
           index = rand() % size;
           url = url_list[index];
           stats.issue();
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
-          stats.receive(serverResponse.isCacheHit, doc_size);
+          stats.receive(serverResponse.cache_hit_flag, doc_size);
           cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.isCacheHit <<"\n";
     }
       //    url = "google.com";
