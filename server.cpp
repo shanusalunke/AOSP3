@@ -28,7 +28,7 @@ using namespace apache::thrift::transport;
 using namespace apache::thrift::server;
 using namespace hellons;
 
-/*FIFO CACHEE\*/
+/*FIFO CACHE*/
 //cache_fifo cache;
 
 /*LFU CACHE*/
@@ -52,13 +52,17 @@ void request(response& _return, const std::string& url)
 
        //Check if entry is in the cache
        if (cache.cache_fetch(url, _return.document) == 1){
-         _return.isCacheHit = true;
+         _return.cache_hit_flag = 0;
        }else{
-         fetch_url(url, cache_entry);
+         if (fetch_url(url, cache_entry) == 1){
+           _return.cache_hit_flag = 1;
+         }else if (cache.cache_insert(url, cache_entry) == 1){
+           _return.cache_hit_flag = 2;
+         }else{
+           _return.cache_hit_flag = 3;
+         }
          _return.document = cache_entry;
-         _return.isCacheHit = false;
          std::cout<<"Insert into cache\n";
-         cache.cache_insert(url, cache_entry);
        }
 }
 
