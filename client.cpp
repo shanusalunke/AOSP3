@@ -131,8 +131,8 @@ int main(int argc, char **argv)
   // std::cout<<"Number of loops = "<<NUM_LOOPS <<"\tSequence = "<< SEQUENCE;
 
   statistics stats;
-  // boost::shared_ptr<TTransport> socket(new TSocket("10.0.0.8", 9091));
-  boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
+  boost::shared_ptr<TTransport> socket(new TSocket("10.0.0.8", 9091));
+  // boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
   boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
   boost::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
   response serverResponse;
