@@ -1,0 +1,25 @@
+Total requests = 100
+Hit count = 54
+Miss count = 46
+Cache capacity exceed count = 0
+Failed requests = 0
+
+Hit-data size = 5099817
+Miss-data size = 6125953
+Cache capacity exceed-data size = 0
+
+Total time = 66.0215
+Average hit time = 0.0496102
+Average miss time = 1.37701
+Average exceed time = 0
+Average failure time = 0
+Overall average miss time = 1.37701
+
+==================  Key statistics  ==============
+Hit rate = 0.54
+Miss penalty = 1.3274
+Average access time (AAT) = 0.660215
+
+Data hit rate = 0.454296
+Miss penalty per kB = 0.00981473
+Average access time (AAT) per kB = 0.00588125

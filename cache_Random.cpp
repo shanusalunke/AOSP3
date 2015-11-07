@@ -1,5 +1,6 @@
 #include <iostream>
 #include "cache_Random.h"
+#include <stdio.h>
 
 cache_random::cache_random()
 {
@@ -27,8 +28,12 @@ int cache_random::cache_isFull(int data_size)
 
 int cache_random::cache_find(string url)
 {
-	if(cache.count(url) == 0)
+	cout << "cache find\n";
+	if(cache.count(url) == 0){
+		cout <<"find returns 0\n";
 		return 0;
+	}
+	cout <<"find returns 1\n";
 	return 1;
 }
 
@@ -45,8 +50,9 @@ int cache_random::cache_fetch(string url, string &value)
 int cache_random::cache_insert(string url, string value)
 {
 	int data_size = value.length();
-	if( (data_size > CACHE_SIZE) || (data_size == 0 && CACHE_SIZE==0))
+	if( (data_size > CACHE_SIZE) || (data_size == 0 && CACHE_SIZE==0)){
 		return 0;
+	}
 	while(cache_isFull(data_size))
 	{
 		cache_remove(cache_decideReplace());
@@ -75,6 +81,13 @@ int cache_random::cache_remove(int url_index)
 
 int cache_random::cache_decideReplace()
 {
-	int index = int (rand() % random_queue.size()-1);
+
+	int index;
+	//Special case: 1 element in the array
+	if (random_queue.size() == 1){
+		index = 0;
+	}else{
+		index = int (rand() % random_queue.size()-1);
+	}
 	return index;
 }

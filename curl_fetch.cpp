@@ -25,6 +25,8 @@ int fetch_url(std::string input_url, std::string& curl_return) {
   struct wd_in wdi;
   memset(&wdi, 0, sizeof(wdi));
 
+  std::cout <<"Fetch url from internet\n";
+
   /* Get a curl handle.  Each thread will need a unique handle. */
   curl = curl_easy_init();
   if(NULL != curl) {

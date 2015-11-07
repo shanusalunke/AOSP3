@@ -1,0 +1,26 @@
+ERROR: connect() failed: Connection refused
+Total requests = 100
+Hit count = 7
+Miss count = 6
+Cache capacity exceed count = 87
+Failed requests = 0
+
+Hit-data size = 4202
+Miss-data size = 4202
+Cache capacity exceed-data size = 11301547
+
+Total time = 74.6643
+Average hit time = 0.00400496
+Average miss time = 0.80842
+Average exceed time = 0.802135
+Average failure time = 0
+Overall average miss time = 0.80254
+
+==================  Key statistics  ==============
+Hit rate = 0.07
+Miss penalty = 0.798535
+Average access time (AAT) = 0.746643
+
+Data hit rate = 0.000371531
+Miss penalty per kB = -7.01301e-05
+Average access time (AAT) per kB = 0.00660164

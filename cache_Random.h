@@ -16,7 +16,7 @@ class cache_random
   int CACHE_SIZE;
   int size;
   map<string,string> cache;
-  vector<string> random_queue = vector<string>(50);
+  vector<string> random_queue;
 
 public:
 /*Constructor*/

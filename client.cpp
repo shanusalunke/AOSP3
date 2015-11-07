@@ -128,9 +128,10 @@ int main(int argc, char **argv)
     NUM_LOOPS = atoi(argv[1]);
     SEQUENCE = atoi(argv[2]);
   }
-  std::cout<<"Number of loops = "<<NUM_LOOPS <<"\tSequence = "<< SEQUENCE;
+  // std::cout<<"Number of loops = "<<NUM_LOOPS <<"\tSequence = "<< SEQUENCE;
 
   statistics stats;
+  // boost::shared_ptr<TTransport> socket(new TSocket("10.0.0.8", 9091));
   boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
   boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
   boost::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
@@ -155,7 +156,7 @@ int main(int argc, char **argv)
 
     switch (SEQUENCE){
       case 0:{
-        std::cout<<"Using access sequence : Random\n";
+        // std::cout<<"Using access sequence : Random\n";
         for(int i=0;i<NUM_LOOPS;i++)
         {
           index = rand() % size;
@@ -164,12 +165,12 @@ int main(int argc, char **argv)
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
           stats.receive(serverResponse.cache_hit_flag, doc_size);
-          cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+          // cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
         }
         break;
       }
       case 1:{
-        std::cout<<"Using access sequence : Predefined\n";
+        // std::cout<<"Using access sequence : Predefined\n";
         int count=0;
         int i=0;
         while(count<NUM_LOOPS)
@@ -182,7 +183,7 @@ int main(int argc, char **argv)
             client.request(serverResponse, url);
             doc_size = (long)serverResponse.document.length();
             stats.receive(serverResponse.cache_hit_flag, doc_size);
-            cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+            // cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
             count++;
           }
 
@@ -193,7 +194,7 @@ int main(int argc, char **argv)
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
           stats.receive(serverResponse.cache_hit_flag, doc_size);
-          cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+          // cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
           count++;
 
           //i+1
@@ -204,7 +205,7 @@ int main(int argc, char **argv)
             client.request(serverResponse, url);
             doc_size = (long)serverResponse.document.length();
             stats.receive(serverResponse.cache_hit_flag, doc_size);
-            cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+            // cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
             count++;
           }
 

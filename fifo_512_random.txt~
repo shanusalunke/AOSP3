@@ -1,0 +1,125 @@
+DocSize: 187867  3
+DocSize: 440593  3
+DocSize: 14195  3
+DocSize: 43605  3
+DocSize: 112540  3
+DocSize: 41359  3
+DocSize: 603182  3
+DocSize: 181185  3
+DocSize: 55935  3
+DocSize: 55334  3
+DocSize: 54471  3
+DocSize: 50008  3
+DocSize: 468085  3
+DocSize: 64867  3
+DocSize: 155205  3
+DocSize: 3855  3
+DocSize: 54525  3
+DocSize: 430311  3
+DocSize: 181185  3
+DocSize: 181185  3
+DocSize: 81  2
+DocSize: 3855  3
+DocSize: 43605  3
+DocSize: 14195  3
+DocSize: 25866  3
+DocSize: 50008  3
+DocSize: 266  2
+DocSize: 73506  3
+DocSize: 112540  3
+DocSize: 43605  3
+DocSize: 43605  3
+DocSize: 53359  3
+DocSize: 86217  3
+DocSize: 50008  3
+DocSize: 41359  3
+DocSize: 25866  3
+DocSize: 55935  3
+DocSize: 14235  3
+DocSize: 54513  3
+DocSize: 165503  3
+DocSize: 55935  3
+DocSize: 64867  3
+DocSize: 306972  3
+DocSize: 67895  3
+DocSize: 37191  3
+DocSize: 86185  3
+DocSize: 37191  3
+DocSize: 54499  3
+DocSize: 181185  3
+DocSize: 187922  3
+DocSize: 0  2
+DocSize: 61158  3
+DocSize: 49398  3
+DocSize: 44469  3
+DocSize: 187908  3
+DocSize: 181185  3
+DocSize: 63616  3
+DocSize: 276185  3
+DocSize: 430720  3
+DocSize: 80269  3
+DocSize: 54473  3
+DocSize: 334705  3
+DocSize: 50333  3
+DocSize: 43605  3
+DocSize: 80269  3
+DocSize: 50008  3
+DocSize: 0  2
+DocSize: 438345  3
+DocSize: 0  0
+DocSize: 53338  3
+DocSize: 19028  3
+DocSize: 81  0
+DocSize: 181185  3
+DocSize: 80269  3
+DocSize: 55270  3
+DocSize: 165421  3
+DocSize: 50333  3
+DocSize: 67895  3
+DocSize: 25866  3
+DocSize: 272422  3
+DocSize: 14235  3
+DocSize: 603182  3
+DocSize: 266  0
+DocSize: 49247  3
+DocSize: 64704  3
+DocSize: 276185  3
+DocSize: 271782  3
+DocSize: 165514  3
+DocSize: 14278  3
+DocSize: 112540  3
+DocSize: 50008  3
+DocSize: 64867  3
+DocSize: 19028  3
+DocSize: 14235  3
+DocSize: 49247  3
+DocSize: 44469  3
+DocSize: 399131  3
+DocSize: 155205  3
+DocSize: 398865  3
+DocSize: 49247  3
+Total requests = 100
+Hit count = 3
+Miss count = 4
+Cache capacity exceed count = 93
+Failed requests = 0
+
+Hit-data size = 347
+Miss-data size = 347
+Cache capacity exceed-data size = 11630756
+
+Total time = 81.737
+Average hit time = 0.0288867
+Average miss time = 1.06166
+Average exceed time = 0.832298
+Average failure time = 0
+Overall average miss time = 0.841756
+
+==================  Key statistics  ==============
+Hit rate = 0.03
+Miss penalty = 0.812869
+Average access time (AAT) = 0.81737
+
+Data hit rate = 2.98329e-05
+Miss penalty per kB = -0.242721
+Average access time (AAT) per kB = 0.00702724

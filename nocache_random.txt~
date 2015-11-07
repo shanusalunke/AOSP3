@@ -1,0 +1,126 @@
+Number of loops = 100	Sequence = 0Using access sequence : Random
+DocSize: 187899  3
+DocSize: 440919  3
+DocSize: 14194  3
+DocSize: 43605  3
+DocSize: 112540  3
+DocSize: 41359  3
+DocSize: 603182  3
+DocSize: 179010  3
+DocSize: 55935  3
+DocSize: 54557  3
+DocSize: 54455  3
+DocSize: 50008  3
+DocSize: 471462  3
+DocSize: 64704  3
+DocSize: 155205  3
+DocSize: 3855  3
+DocSize: 59410  3
+DocSize: 429943  3
+DocSize: 179010  3
+DocSize: 179010  3
+DocSize: 81  3
+DocSize: 3855  3
+DocSize: 43605  3
+DocSize: 14195  3
+DocSize: 25902  3
+DocSize: 50008  3
+DocSize: 266  3
+DocSize: 73736  3
+DocSize: 112540  3
+DocSize: 43605  3
+DocSize: 43605  3
+DocSize: 53344  3
+DocSize: 86210  3
+DocSize: 50008  3
+DocSize: 41359  3
+DocSize: 25866  3
+DocSize: 55935  3
+DocSize: 14235  3
+DocSize: 54479  3
+DocSize: 165482  3
+DocSize: 0  3
+DocSize: 64867  3
+DocSize: 306972  3
+DocSize: 67895  3
+DocSize: 37191  3
+DocSize: 86217  3
+DocSize: 37191  3
+DocSize: 54448  3
+DocSize: 179010  3
+DocSize: 187890  3
+DocSize: 0  3
+DocSize: 60351  3
+DocSize: 49398  3
+DocSize: 44469  3
+DocSize: 187897  3
+DocSize: 179010  3
+DocSize: 63616  3
+DocSize: 275897  3
+DocSize: 430828  3
+DocSize: 80272  3
+DocSize: 54512  3
+DocSize: 335132  3
+DocSize: 50333  3
+DocSize: 43605  3
+DocSize: 80272  3
+DocSize: 50008  3
+DocSize: 0  3
+DocSize: 440658  3
+DocSize: 0  3
+DocSize: 53353  3
+DocSize: 19047  3
+DocSize: 81  3
+DocSize: 179010  3
+DocSize: 80272  3
+DocSize: 55246  3
+DocSize: 165476  3
+DocSize: 50333  3
+DocSize: 67895  3
+DocSize: 25866  3
+DocSize: 272415  3
+DocSize: 14235  3
+DocSize: 603182  3
+DocSize: 266  3
+DocSize: 49247  3
+DocSize: 64867  3
+DocSize: 276030  3
+DocSize: 272415  3
+DocSize: 165498  3
+DocSize: 0  3
+DocSize: 112540  3
+DocSize: 50008  3
+DocSize: 64704  3
+DocSize: 19048  3
+DocSize: 14235  3
+DocSize: 49406  3
+DocSize: 44469  3
+DocSize: 437708  3
+DocSize: 155205  3
+DocSize: 445149  3
+DocSize: 49247  3
+Total requests = 100
+Hit count = 0
+Miss count = 0
+Cache capacity exceed count = 100
+Failed requests = 0
+
+Hit-data size = 0
+Miss-data size = 0
+Cache capacity exceed-data size = 11642970
+
+Total time = 86.3013
+Average hit time = 0
+Average miss time = 0
+Average exceed time = 0.863013
+Average failure time = 0
+Overall average miss time = 0.863013
+
+==================  Key statistics  ==============
+Hit rate = 0
+Miss penalty = 0.863013
+Average access time (AAT) = 0.863013
+
+Data hit rate = 0
+Miss penalty per kB = 0.00741231
+Average access time (AAT) per kB = 0.00741231

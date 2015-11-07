@@ -13,6 +13,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
+#include <stdio.h>
 
 #include "gen-cpp/HelloWorld.h"
 #include "../curl_fetch.h"
@@ -32,10 +33,10 @@ using namespace hellons;
 //cache_fifo cache;
 
 /*LFU CACHE*/
-cache_lfu cache;
+// cache_lfu cache;
 
 /*RANDOM CACHE*/
-// cache_random cache;
+cache_random cache;
 
 class HelloWorldHandler : public HelloWorldIf {
 public:
@@ -54,7 +55,9 @@ void request(response& _return, const std::string& url)
        if (cache.cache_fetch(url, _return.document) == 1){
          _return.cache_hit_flag = 0;
        }else{
-         if (fetch_url(url, cache_entry) == 1){
+         cout << "Not found in cache. Going to network\n";
+         int fetchurlret = fetch_url(url, cache_entry);
+         if ( fetchurlret == 1){
            _return.cache_hit_flag = 1;
          }else if (cache.cache_insert(url, cache_entry) == 1){
            _return.cache_hit_flag = 2;
