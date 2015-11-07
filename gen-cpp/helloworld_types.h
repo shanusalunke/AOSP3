@@ -22,9 +22,9 @@ namespace hellons {
 class response;
 
 typedef struct _response__isset {
-  _response__isset() : document(false), isCacheHit(false) {}
+  _response__isset() : document(false), cache_hit_flag(false) {}
   bool document :1;
-  bool isCacheHit :1;
+  bool cache_hit_flag :1;
 } _response__isset;
 
 class response {
@@ -32,24 +32,24 @@ class response {
 
   response(const response&);
   response& operator=(const response&);
-  response() : document(), isCacheHit(0) {
+  response() : document(), cache_hit_flag(0) {
   }
 
   virtual ~response() throw();
   std::string document;
-  bool isCacheHit;
+  int32_t cache_hit_flag;
 
   _response__isset __isset;
 
   void __set_document(const std::string& val);
 
-  void __set_isCacheHit(const bool val);
+  void __set_cache_hit_flag(const int32_t val);
 
   bool operator == (const response & rhs) const
   {
     if (!(document == rhs.document))
       return false;
-    if (!(isCacheHit == rhs.isCacheHit))
+    if (!(cache_hit_flag == rhs.cache_hit_flag))
       return false;
     return true;
   }

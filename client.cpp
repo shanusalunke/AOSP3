@@ -44,10 +44,15 @@ statistics::statistics()
 {
   hit_count=0;
   miss_count=0;
+  curl_fail_count=0;
+  data_exceed_count=0;
   hit_size=0;
   miss_size=0;
+  data_exceed_size=0;
   hit_time=0;
   miss_time=0;
+  curl_fail_time=0;
+  data_exceed_time=0;
 }
 
 void statistics::issue()
@@ -60,38 +65,57 @@ void statistics::receive(int response, long rcv_size)
 {
     gettimeofday(&tim, NULL);
     time_int = (tim.tv_sec+(tim.tv_usec/1000000.0)) - time_int;
+    /*
+    0 - cache hit
+    1 - cache miss because couldn't return curl
+    2 - cache miss because couldn't find in cache
+    3 - cache miss because document couldn't fit in the cache
+    */
     switch(response)
     {
-      case true :
+      case 0 :
           hit_count++;
           hit_size += rcv_size;
           hit_time += time_int;
           break;
-      case false:
+      case 1:
+          curl_fail_count++;
+          curl_fail_time += time_int;
+          break;
+      case 2:
           miss_count++;
           miss_size += rcv_size;
           miss_time += time_int;
+          break;
+      case 3:
+          data_exceed_count++;
+          data_exceed_size += rcv_size;
+          data_exceed_time += time_int;
           break;
       }
   }
 
  void statistics::tally()
  {
-   cout<<"Total requests = "<<hit_count+miss_count;
+   cout<<"Total requests = "<<hit_count+miss_count+data_exceed_count+curl_fail_count;
    cout<<"\nHit count = "<<hit_count<<"\nMiss count = "<<miss_count;
+   cout<<"\nCache capacity exceed count = "<<data_exceed_count;
+   cout<<"\nFailed requests = "<<curl_fail_count<<"\n";
    cout<<"\nHit-data size = "<<hit_size<<"\nMiss-data size = "<<miss_size;
-   cout<<"\n\nTotal time = "<<hit_time+miss_time;
+   cout<<"\nCache capacity exceed-data size = "<<data_exceed_size;
+   cout<<"\n\nTotal time = "<<hit_time+miss_time+data_exceed_time+curl_fail_time;
    cout<<"\nAverage hit time = "<<((hit_count==0)? 0:(hit_time/hit_count));
    cout<<"\nAverage miss time = "<<((miss_count==0)? 0:(miss_time/miss_count));
-
-   cout<<"\n\n==================  Key statistics  ==============\n"
-             "Hit rate = "<<(float)hit_count/(hit_count+miss_count);
-   cout<<"\nMiss penalty = "<<((miss_count==0)? 0:(((miss_time)/(miss_count))- ((hit_count==0)? 0:(hit_time/hit_count))));
-   cout<<"\nAverage access time (AAT) = "<<(miss_time + hit_time)/ (miss_count+hit_count);
-   cout<<"\n\nData hit rate = "<<(float)hit_size/(hit_size+miss_size);
-   cout<<"\nMiss penalty per kB = "<<((miss_size==0)? 0:((((miss_time)*1000)/(miss_size))- ((hit_size==0)? 0:((hit_time*1000)/hit_size))));
-   cout<<"\nAverage access time (AAT) per kB = "<<((miss_time + hit_time)*1000)/ (miss_size+hit_size);
-
+   cout<<"\nAverage exceed time = "<<((data_exceed_count==0)? 0:(data_exceed_time/data_exceed_count));
+   cout<<"\nAverage failure time = "<<((curl_fail_count==0)? 0:(curl_fail_time/curl_fail_count));
+   cout<<"\nOverall average miss time = "<<((miss_count+data_exceed_count==0)? 0:((miss_time + data_exceed_time)/(miss_count+data_exceed_count)));
+   cout<<"\n\n==================  Key statistics  ==============\n";
+   cout<<"Hit rate = "<<(float)hit_count/(hit_count+miss_count+curl_fail_count+data_exceed_count);
+   cout<<"\nMiss penalty = "<<((miss_count+data_exceed_count==0)? 0:(((miss_time + data_exceed_time)/(miss_count+data_exceed_count))- ((hit_count==0)? 0:(hit_time/hit_count))));
+   cout<<"\nAverage access time (AAT) = "<<(miss_time + data_exceed_time + hit_time)/ (miss_count+data_exceed_count+hit_count);
+   cout<<"\n\nData hit rate = "<<(float)hit_size/(hit_size+miss_size+data_exceed_size);
+   cout<<"\nMiss penalty per kB = "<<((miss_size+data_exceed_size==0)? 0:((((miss_time + data_exceed_time)*1000)/(miss_size+data_exceed_size))- ((hit_size==0)? 0:((hit_time*1000)/hit_size))));
+   cout<<"\nAverage access time (AAT) per kB = "<<((miss_time + data_exceed_time + hit_time)*1000)/ (miss_size+data_exceed_size+hit_size);
  }
 
 
@@ -135,7 +159,7 @@ int main(int argc, char **argv)
           client.request(serverResponse, url);
           doc_size = (long)serverResponse.document.length();
           stats.receive(serverResponse.cache_hit_flag, doc_size);
-          cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.isCacheHit <<"\n";
+          cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
     }
       //    url = "google.com";
       //    client.request(serverResponse, url);

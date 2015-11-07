@@ -22,7 +22,7 @@ public:
 /*Constructor*/
   cache_random();
   cache_random(int max);
-
+  void cache_set_max(int max);
   void cache_set_size(int max);
   int cache_fetch(string url, string &value);
   int cache_insert(string url, string value);
@@ -32,7 +32,6 @@ private:
 	int cache_find(string url);
 	int cache_remove(int url_index);
 	int cache_decideReplace();
-  void cache_set_max(int max);
 };
 
 #endif

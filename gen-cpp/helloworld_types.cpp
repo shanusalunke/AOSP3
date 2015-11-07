@@ -22,8 +22,8 @@ void response::__set_document(const std::string& val) {
   this->document = val;
 }
 
-void response::__set_isCacheHit(const bool val) {
-  this->isCacheHit = val;
+void response::__set_cache_hit_flag(const int32_t val) {
+  this->cache_hit_flag = val;
 }
 
 uint32_t response::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -56,9 +56,9 @@ uint32_t response::read(::apache::thrift::protocol::TProtocol* iprot) {
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->isCacheHit);
-          this->__isset.isCacheHit = true;
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->cache_hit_flag);
+          this->__isset.cache_hit_flag = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -84,8 +84,8 @@ uint32_t response::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->document);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("isCacheHit", ::apache::thrift::protocol::T_BOOL, 2);
-  xfer += oprot->writeBool(this->isCacheHit);
+  xfer += oprot->writeFieldBegin("cache_hit_flag", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->cache_hit_flag);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -96,18 +96,18 @@ uint32_t response::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(response &a, response &b) {
   using ::std::swap;
   swap(a.document, b.document);
-  swap(a.isCacheHit, b.isCacheHit);
+  swap(a.cache_hit_flag, b.cache_hit_flag);
   swap(a.__isset, b.__isset);
 }
 
 response::response(const response& other0) {
   document = other0.document;
-  isCacheHit = other0.isCacheHit;
+  cache_hit_flag = other0.cache_hit_flag;
   __isset = other0.__isset;
 }
 response& response::operator=(const response& other1) {
   document = other1.document;
-  isCacheHit = other1.isCacheHit;
+  cache_hit_flag = other1.cache_hit_flag;
   __isset = other1.__isset;
   return *this;
 }
@@ -115,7 +115,7 @@ void response::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "response(";
   out << "document=" << to_string(document);
-  out << ", " << "isCacheHit=" << to_string(isCacheHit);
+  out << ", " << "cache_hit_flag=" << to_string(cache_hit_flag);
   out << ")";
 }
 
