@@ -70,7 +70,7 @@ int cache_lfu::cache_fetch(string url, string &value)
 int cache_lfu::cache_insert(string url, string value)
 {
 	int data_size = value.length();
-	if(data_size > CACHE_SIZE)
+	if( (data_size > CACHE_SIZE) || (data_size == 0 && CACHE_SIZE==0))
 		return 0;
 	while(cache_isFull(data_size))
 	{

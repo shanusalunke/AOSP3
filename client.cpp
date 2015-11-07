@@ -122,11 +122,13 @@ void statistics::receive(int response, long rcv_size)
 int main(int argc, char **argv)
 {
   int NUM_LOOPS = 100;
-  if (argc == 2)
+  int SEQUENCE = 0; //0-random 1-predefined
+  if (argc == 3)
   {
     NUM_LOOPS = atoi(argv[1]);
+    SEQUENCE = atoi(argv[2]);
   }
-  std::cout<<"Number of loops = "<<NUM_LOOPS<<"\n";
+  std::cout<<"Number of loops = "<<NUM_LOOPS <<"\tSequence = "<< SEQUENCE;
 
   statistics stats;
   boost::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
@@ -150,9 +152,12 @@ int main(int argc, char **argv)
 
   try {
     transport->open();
-    std::cout<<"Using access sequence : Random\n";
-    for(int i=0;i<NUM_LOOPS;i++)
-    {
+
+    switch (SEQUENCE){
+      case 0:{
+        std::cout<<"Using access sequence : Random\n";
+        for(int i=0;i<NUM_LOOPS;i++)
+        {
           index = rand() % size;
           url = url_list[index];
           stats.issue();
@@ -160,11 +165,54 @@ int main(int argc, char **argv)
           doc_size = (long)serverResponse.document.length();
           stats.receive(serverResponse.cache_hit_flag, doc_size);
           cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
-    }
-      //    url = "google.com";
-      //    client.request(serverResponse, url);
-        //  doc_size = (long)serverResponse.document.length();
-      //    std::cout<<"DocSize: "<<doc_size<<"\n";
+        }
+        break;
+      }
+      case 1:{
+        std::cout<<"Using access sequence : Predefined\n";
+        int count=0;
+        int i=0;
+        while(count<NUM_LOOPS)
+        {
+          //i-1
+          if (i>0){
+            index = (i-1) % size;
+            url = url_list[index];
+            stats.issue();
+            client.request(serverResponse, url);
+            doc_size = (long)serverResponse.document.length();
+            stats.receive(serverResponse.cache_hit_flag, doc_size);
+            cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+            count++;
+          }
+
+          //i
+          index = (i) % size;
+          url = url_list[index];
+          stats.issue();
+          client.request(serverResponse, url);
+          doc_size = (long)serverResponse.document.length();
+          stats.receive(serverResponse.cache_hit_flag, doc_size);
+          cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+          count++;
+
+          //i+1
+          if (i < NUM_LOOPS-1){
+            index = (i+1) % size;
+            url = url_list[index];
+            stats.issue();
+            client.request(serverResponse, url);
+            doc_size = (long)serverResponse.document.length();
+            stats.receive(serverResponse.cache_hit_flag, doc_size);
+            cout<<"DocSize: "<<doc_size<< "  "<<serverResponse.cache_hit_flag <<"\n";
+            count++;
+          }
+
+          i++;
+        }
+      }
+    }//end of switch
+
    stats.tally();
 }
   catch (TException& tx)
